@@ -22,6 +22,18 @@ async function getNotes(userId) {
     return allNotes;
 }
 
+//get deleted Notes
+async function getDeletedNotes(userId) {
+    const allNotes = await notes.find({ 
+        userId,
+        status: 'deleted'
+        
+    })
+    .populate('userId', 'name')
+    .populate('updatedBy', 'name');
+    return allNotes;
+}
+
 // Get a note by ID
 async function getNoteById(id) {
     const note = await notes.findById(id)
@@ -33,6 +45,13 @@ async function getNoteById(id) {
 // get all notes by organisationId
 async function getNotesByOrganisationId(organisationId) {
     const allNotes = await notes.find({ organisationId, status: 'active' })
+    .populate('userId', 'name')
+    .populate('updatedBy', 'name');
+    return allNotes;
+}
+
+async function getDeletedNotesByOrganisationId(organisationId) {
+    const allNotes = await notes.find({ organisationId, status: 'deleted' })
     .populate('userId', 'name')
     .populate('updatedBy', 'name');
     return allNotes;
@@ -69,5 +88,7 @@ module.exports = {
     updateNote,
     deleteNote,
     noteDbDelete,
-    getNotesByOrganisationId
+    getNotesByOrganisationId,
+    getDeletedNotes,
+    getDeletedNotesByOrganisationId
 };

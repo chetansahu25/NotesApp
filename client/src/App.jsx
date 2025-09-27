@@ -1,6 +1,7 @@
 import HomePage from './pages/HomePage'
 import LoginForm from './pages/LoginForm'
 import { Routes, Route } from 'react-router'
+import DeletedNotes from './pages/DeletedNotes'
 import Dashboard from './components/Dashboard'
 import RegisterForm from './pages/RegisterForm'
 import { AuthProvider } from './context/authContext'
@@ -23,6 +24,7 @@ const App = () => {
           <Route element={<ProtectRoutes setPage='/login' />}>
             <Route element={<UserLayout />}>
               <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/deleted-notes' element={<DeletedNotes />}/>
             </Route>
           </Route>
 

@@ -48,7 +48,17 @@ export const deleteNote = async (noteId) => {
         throw new Error('Failed to delete note');
     }
 }
-
+export const permanentlyDeleteNote = async (noteId) => {
+    try {
+        const response = await axios.delete(
+            `${import.meta.env.VITE_BACKEND_URL}/notes/permanent/${noteId}`,
+            { withCredentials: true }
+        );
+        return response.data;
+    } catch (error) {
+        throw new Error('Failed to delete note');
+    }
+}
 
 export const editNote = async (noteId, noteData) =>{
     try {
@@ -59,4 +69,16 @@ export const editNote = async (noteId, noteData) =>{
         console.log(error)
         throw new Error(error)
     }   
+}
+
+export const getDeletedNotes = async () =>{
+    try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/notes/deleted`,{ withCredentials: true })    
+        console.log(response.data)    
+        return response.data
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
 }

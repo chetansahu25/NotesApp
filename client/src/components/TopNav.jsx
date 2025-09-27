@@ -14,20 +14,24 @@ const TopNav = () => {
   }
 
   return (
-    <div className=' absolute right-0 w-5/6 flex gap-5 items-center justify-between px-10 z-10 border-b h-15  '>
-      <div >
-        <span className='font-semibold'>
-        Welcome {name} !
-        </span>
+    <nav className="fixed top-0 right-0 left-0 md:left-64 lg:left-72 bg-white border-b border-gray-200 z-20">
+      <div className="flex items-center justify-between px-4 md:px-6 lg:px-8 h-16">
+        <div className="flex items-center">
+          <span className="font-semibold text-sm md:text-base">
+            Welcome {name}!
+          </span>
+        </div>
+        <div className="flex items-center gap-2 md:gap-4">
+          <button 
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-3 py-2 text-sm rounded-lg border border-gray-300 text-gray-700 hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors duration-200"
+          >
+            <LogOut size={18} />
+            <span className="hidden md:inline">Logout</span>
+          </button>
+        </div>
       </div>
-      <div className='flex gap-5'>
-
-      <span className=' flex items-center justify-center gap-2 p-2 rounded-full border-2 font-bold hover:bg-red-400 cursor-pointer hover:scale-105 duration-200'>
-        <LogOut onClick={handleLogout}  />
-        Logout
-      </span>
-      </div>
-    </div>
+    </nav>
   )
 }
 

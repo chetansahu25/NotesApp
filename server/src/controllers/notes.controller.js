@@ -1,4 +1,14 @@
-const { createNote, deleteNote, updateNote, getNoteById, getNotes, noteDbDelete, getNotesByOrganisationId } = require ("../dao/notes.dao");
+const { 
+    createNote,
+     deleteNote,
+      updateNote,
+      getNoteById, 
+      getNotes, 
+      noteDbDelete, 
+      getNotesByOrganisationId,
+      getDeletedNotes,
+      getDeletedNotesByOrganisationId 
+    } = require ("../dao/notes.dao");
 const { isAdmin } = require("../dao/user.dao");
 
 // Create a new note
@@ -25,6 +35,23 @@ async function handleGetNotes(req, res) {
         return res.status(200).json(notes);
     }
 }
+// Get all deleted notes
+async function handleGetDeletedNotes(req, res) {
+    const { userId } = req;
+    const isAdminId =  await isAdmin(userId);
+    console.log(isAdminId);
+    
+
+    if (isAdminId) {
+        const { organisationId } = req;
+        const notes = await getDeletedNotesByOrganisationId(organisationId);
+        return res.status(200).json(notes);
+    } else {
+        const notes = await getDeletedNotes(userId);
+        return res.status(200).json(notes);
+    }
+}
+
 
 // Get a note by ID
 async function handleGetNoteById(req, res) {
@@ -61,5 +88,6 @@ module.exports = {
     handleGetNoteById,
     handleUpdateNote,
     handleDeleteNote,
-    handleNoteDbDelete
+    handleNoteDbDelete,
+    handleGetDeletedNotes
 }; 

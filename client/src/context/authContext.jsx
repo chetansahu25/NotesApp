@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/auth/register`,
         {
-          organisationId: "68cd1202c7eab4babf54b070",    
+          organisationId: "68d80725cd9688f7d33fc1ac",    
           name: formData.name,
           role: formData.role,
           email: formData.email,

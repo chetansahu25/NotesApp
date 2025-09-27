@@ -1,14 +1,14 @@
-import HomePage from './pages/HomePage'
-import LoginForm from './pages/LoginForm'
+import HomePage from './pages/HomePage.jsx'
+import LoginForm from './pages/LoginForm.jsx'
 import { Routes, Route } from 'react-router'
-import DeletedNotes from './pages/DeletedNotes'
-import Dashboard from './components/Dashboard'
-import RegisterForm from './pages/RegisterForm'
-import { AuthProvider } from './context/authContext'
-import ProtectRoutes from './utils/ProtectRoutes'
-import UserLayout from './components/Layouts/UserLayout'
+import DeletedNotes from './pages/DeletedNotes.jsx'
+import Dashboard from './components/Dashboard.jsx'
+import RegisterForm from './pages/RegisterForm.jsx'
+import { AuthProvider } from './context/authContext.jsx'
+import ProtectRoutes from './utils/ProtectRoutes.jsx'
+import UserLayout from './components/Layouts/UserLayout.jsx'
 
-import PageNotFound from './pages/PageNotFound'
+import PageNotFound from './pages/PageNotFound.jsx'
 
 
 const App = () => {
